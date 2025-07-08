@@ -23,7 +23,10 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ("nombre", models.CharField(max_length=100)),
-                ("precio", models.DecimalField(decimal_places=2, max_digits=10)),
+                (
+                    "precio",
+                    models.DecimalField(decimal_places=2, max_digits=10),
+                ),
                 ("disponible", models.BooleanField(default=True)),
             ],
         ),
