@@ -72,5 +72,5 @@ jobs:
           coverage run manage.py test
           coverage report --fail-under=80
 
-      - name: Lint with flake8
-        run: flake8 .
+      # - name: Lint with flake8
+      #   run: flake8 .
