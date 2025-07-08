@@ -7,7 +7,6 @@ class Item(models.Model):
 
     def __str__(self):
         return self.name
-    
 
 
 class Producto(models.Model):
@@ -17,4 +16,3 @@ class Producto(models.Model):
 
     def __str__(self):
         return self.nombre
-
