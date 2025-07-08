@@ -17,13 +17,6 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / '.env')  # <- SIEMPRE se carga .env primero
 
-# Cargar .env solo si NO estamos corriendo dentro de Docker
-if os.getenv('RUNNING_IN_DOCKER') != '1':
-    DB_HOST=os.getenv('DB_HOST_DEV')
-else:
-    DB_HOST=os.getenv('DB_HOST_DOCKER')
-
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 
@@ -85,7 +78,7 @@ DATABASES = {
         'NAME': os.getenv('POSTGRES_DB'),
         'USER': os.getenv('POSTGRES_USER'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-        'HOST': DB_HOST,
+        'HOST': os.getenv('DB_HOST'),
         'PORT': os.getenv('DB_PORT', 5432),
     }
 }
