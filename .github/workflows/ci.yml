@@ -45,6 +45,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install coverage flake8
 
       - name: Wait for PostgreSQL
         run: |
@@ -57,8 +58,19 @@ jobs:
             sleep 2
           done
 
+      - name: Run system checks
+        run: python manage.py check
+
       - name: Run migrations
         run: python manage.py migrate
 
-      - name: Run tests
-        run: python manage.py test
+      - name: Collect static files
+        run: python manage.py collectstatic --noinput
+
+      - name: Run tests with coverage
+        run: |
+          coverage run manage.py test
+          coverage report --fail-under=80
+
+      - name: Lint with flake8
+        run: flake8 .
