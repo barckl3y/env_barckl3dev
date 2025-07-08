@@ -27,7 +27,7 @@ jobs:
       POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
       DB_HOST_DOCKER: ${{ secrets.DB_HOST_DOCKER }}
       DB_HOST_DEV: ${{ secrets.DB_HOST_DEV }}
-      DB_PORT: ${{ secrets.DB_PORT }}
+      DB_PORT: 5432
 
     steps:
       - uses: actions/checkout@v4
